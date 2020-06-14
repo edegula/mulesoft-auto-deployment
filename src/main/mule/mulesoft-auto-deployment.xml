@@ -5,8 +5,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="4ef9796b-031f-4bab-b621-3915ba6407a5" >
-		<http:listener-connection host="0.0.0.0" port="8081" />
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
 	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="28364e16-b3c5-4b91-a6ac-71751ff24539" file="config.yaml" />
 	<flow name="mulesoft-auto-deploymentFlow" doc:id="3e15db20-e8de-43bf-aa9a-6cb20265441d" >
 		<http:listener doc:name="Listener" doc:id="29a1f300-e252-4c4e-809d-894edf1f8538" config-ref="HTTP_Listener_config" path="/hello"/>
 		<set-payload value='Hello' doc:name="Set Payload" doc:id="c18b0657-d102-4914-b70f-6551809e9222"/>
