@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="new-test-suite.xml" />
+	<munit:test name="new-test-suite-mulesoft-auto-deploymentFlowTest" doc:id="6bb0c2e0-43ed-4e7c-85c9-8a8fb905644a" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to mulesoft-auto-deploymentFlow" doc:id="6db4704d-5f21-4f16-a0ca-bbad1f593d8b" name="mulesoft-auto-deploymentFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<set-variable value="#[payload]" doc:name="Set Variable" doc:id="d911d24f-addc-44e9-9e96-4477b28c551d" variableName="response"/>
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="f64b1b2c-6742-4f4a-8d89-5bd954b5077b" actual="#[vars.response]" expected='#["Hello"]' message='#["Expected Hello but received"]'/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
